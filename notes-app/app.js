@@ -1,33 +1,41 @@
-// Importing modules class
-// const fs = require('fs');
-
-// fs.writeFileSync('notes.txt', 'My name is Ariel Waisburg');
-// fs.appendFileSync('notes.txt', ` and I'm learning NodeJS!!`);
-
-// Importing own files class
-// const validator = require('validator')
 const chalk = require('chalk')
+const yargs = require('yargs')
 const notes = require('./notes')
 
-// const printNotes = notes()
+ // adding a note
+yargs.command({
+  command: 'add',
+  describe: 'Add a new note',
+  handler: function () {
+    console.log('Adding a new note!')
+  }
+})
 
-// console.log(printNotes)
+// removing a note
+yargs.command({
+  command: 'remove',
+  describe: 'Remove a note',
+  handler: function () {
+    console.log('Removing a note!')
+  }
+})
 
-// console.log(chalk.green.bold.inverse('Success!'));
+// reading a note
+yargs.command({
+  command: 'read',
+  describe: 'Read a note',
+  handler: function () {
+    console.log('Reading a note!')
+  }
+})
 
-// // console.log(validator.isURL('http://ariel.io'))
+// listing all existing notes
+yargs.command({
+  command: 'list',
+  describe: 'List notes',
+  handler: function () {
+    console.log('Listing notes!')
+  }
+})
 
-const command = process.argv[2]
-
-console.log(process.argv[3])
-
-if (command === 'add') {
-  console.log('adding a note!')
-} else if (command === 'remove') {
-  console.log('deleting a note')
-} else if (command === 'update') {
-  console.log('updating a note')
-}
-else {
-  console.log('listing notes...')
-}
+console.log(yargs.argv)
