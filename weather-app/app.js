@@ -1,7 +1,22 @@
-console.log('Starting')
+const axios = require('axios')
+require('dotenv').config()
 
-setTimeout(() => {
-    console.log('Hi!')
-}, 2000)
+const URL = `http://api.weatherstack.com/current?access_key=${process.env.API_KEY}&query=`
 
-console.log('Finishing')
+const getWeatherInfoFrom = (location) => {
+    axios.get(`${URL}${location}`)
+    .then(function (response) {
+        // handle success
+        console.log(response.data.current)
+      })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })
+    //   .then(function () {
+    //     // always executed
+    //   });
+}
+
+getWeatherInfoFrom('Buenos Aires')
+
